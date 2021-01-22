@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar style="border:none">
+    <ion-buttons slot="start">
+      <ion-back-button (click)="goToBack()"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>Cancion</ion-card-subtitle>
+      <ion-card-title>Nueva Cancion</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+
+      <ion-item>
+        <ion-label position="floating">Nombre: </ion-label>
+        <ion-input required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Artista: </ion-label>
+        <ion-input required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Pegar Letra: </ion-label>
+        <ion-textarea auto-grow="true" required></ion-textarea>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Tipo de Cancion</ion-label>
+        <ion-select interface="action-sheet" required>
+          <ion-select-option *ngFor="let tipo of tipoCancion" [value]="tipo">{{tipo}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <section>
+        <ion-button expand="block" style="margin-top:30px">Guardar</ion-button>
+      </section>
+
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>
