@@ -1,0 +1,15 @@
+<ion-app>
+  <ion-header translucent>
+    <ion-toolbar>
+      <ion-title><b>{{nombre}}</b></ion-title>
+      <ion-buttons slot="end">
+        <ion-button (click)="dismiss()">Close</ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+<br>
+  <ion-content>
+    <ion-textarea auto-grow=true readonly="true" wrap="hard">
+      {{letra}}
+    </ion-textarea>
+  </ion-content>

@@ -4,20 +4,22 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
 
-      <ion-searchbar showCancelButton="focus" animated *ngIf="folder != 'todas'"></ion-searchbar>
+      <ion-searchbar showCancelButton="focus" animated *ngIf="folder != 'todas'" #txtBuscar (keyup.enter)="buscarCancion(txtBuscar.value)"></ion-searchbar>
 
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
 
+  <ion-progress-bar type="indeterminate" *ngIf="loading"></ion-progress-bar>
+
   <ion-grid>
     <ion-row>
       <ion-col>
-        <ion-card *ngFor="let cancion of canciones">
+        <ion-card *ngFor="let cancion of canciones" (click)="mostrarLetra(cancion)">
           <ion-card-header>
-            <ion-card-subtitle>{{cancion.artista}}</ion-card-subtitle>
-            <ion-card-title>{{cancion.nombre}}</ion-card-title>
+            <ion-card-subtitle><b>{{cancion.artista | uppercase}}</b></ion-card-subtitle>
+            <ion-card-title>{{cancion.nombre | uppercase}}</ion-card-title>
           </ion-card-header>
         </ion-card>
       </ion-col>

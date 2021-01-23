@@ -10,20 +10,29 @@ import { Observable } from 'rxjs';
 })
 export class CancionServiceService {
 
-  private urlBackend = "http://192.168.0.15:3000/canciones";
+  private urlBackend = "https://shekinasongs.herokuapp.com/canciones";
   public Canciones:Cancion[];
   
-  headers = new HttpHeaders().set('Access-Control-Allow-Origin', '*').set("Access-Control-Allow-Headers","X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method").set("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE").set("Allow", "GET, POST, OPTIONS, PUT, DELETE");
-
   constructor(private httpClient: HttpClient) { }
 
-  public getCancionesFiltro(filtro:string,valor:string){
-    const url = `${this.urlBackend}/obtener/${filtro}/${valor}`;
-    this.httpClient.get(url).subscribe(apiData => apiData);
+  public getCancionesFiltro(filtro:string,valor:string):Observable<any>{
+    const url = `${this.urlBackend}/obtener/${filtro}/${valor}`;   
+    console.log(url);
+    return this.httpClient.get(url);
   }
 
   public getCanciones():Observable<any>{
     const url = `${this.urlBackend}/`;
     return this.httpClient.get(url);
+  }
+
+  public saveCanciones(cancion:any):Observable<any>{
+    const url = `${this.urlBackend}/crear`;
+    const json = JSON.stringify(cancion);
+    
+    const body = "json="+json;
+    let headers = new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded');
+
+    return this.httpClient.post(url,body,{headers: headers});
   }
 }
