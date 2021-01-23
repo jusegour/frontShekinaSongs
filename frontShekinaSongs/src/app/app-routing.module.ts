@@ -6,7 +6,7 @@ import { SearchComponent } from './components/search/search.component';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'filtro/nombre',
+    redirectTo: 'filtro/todas',
     pathMatch: 'full'
   },
   {

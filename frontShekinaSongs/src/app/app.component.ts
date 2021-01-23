@@ -27,6 +27,11 @@ export class AppComponent implements OnInit {
       url: '/filtro/nombre',
       icon: 'musical-note-outline'
     },
+    {
+      title: 'Filtrar: Todas',
+      url: '/filtro/todas',
+      icon: 'list-outline'
+    }
   ];
 
   constructor(

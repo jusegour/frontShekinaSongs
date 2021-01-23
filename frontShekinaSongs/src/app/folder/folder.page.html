@@ -4,18 +4,25 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
 
-    <ion-buttons slot="end">
-      <ion-button (click)="goToSearch(folder)"><ion-icon name="search-outline" color="dark"></ion-icon> Buscar</ion-button>
-    </ion-buttons>
+      <ion-searchbar showCancelButton="focus" animated *ngIf="folder != 'todas'"></ion-searchbar>
 
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <div id="container">
-    <strong class="capitalize">Canciones por {{folder}}</strong>
-    <p>Explore <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-card *ngFor="let cancion of canciones">
+          <ion-card-header>
+            <ion-card-subtitle>{{cancion.artista}}</ion-card-subtitle>
+            <ion-card-title>{{cancion.nombre}}</ion-card-title>
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button (click)="goToCreate()">
